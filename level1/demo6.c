@@ -7,8 +7,8 @@ void print_array(int *arr, int n);
 void delete_array(int **arr);
 
 int main() {
-    int n; // Declaring n
-    int *arr = NULL; // Declaring arr
+    int n; 
+    int *arr = NULL; 
 
     printf("Enter number of elements: ");
     if (scanf("%d", &n) != 1) return 1;
@@ -40,14 +40,13 @@ int main() {
 }
 
 int* create_array(int n) {
-    // malloc allocates 'n' times the size of an integer in bytes
     int *temp = (int*)malloc(n * sizeof(int));
     return temp;
 }
 
 void initialize_array(int *arr, int n) {
     for(int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]); // Reading into the heap memory
+        scanf("%d", &arr[i]);
     }
 }
 
@@ -60,7 +59,7 @@ void print_array(int *arr, int n) {
 
 void delete_array(int **arr) {
     if (*arr != NULL) {
-        free(*arr);    // Free the memory the pointer points to
-        *arr = NULL;   // Set the original pointer to NULL
+        free(*arr);    
+        *arr = NULL;   
     }
 }

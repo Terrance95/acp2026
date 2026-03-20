@@ -1,13 +1,12 @@
 #include <stdio.h>
+#include <string.h>
 
-// Function Prototypes
 void input(char *str);
 void concatenate_strings(char *str1, char *str2);
 void display(char *str);
 
 int main() {
-
-    char str1[100], str2[100];
+    char str1[200], str2[100];
 
     input(str1);
     input(str2);
@@ -21,24 +20,23 @@ int main() {
 
 void input(char *str) {
     printf("Enter string:\n");
-    fgets(str,100,stdin);
-    // Write code to read the string
+    fgets(str, 100, stdin);
+    str[strcspn(str, "\n")] = 0;
 }
 
 void concatenate_strings(char *str1, char *str2) {
-    // Write code to concatenate str2 to str1 using while/do while
-    int i=0,j=0;
-    while(str2[i]!='\0'){
+    int i = 0, j = 0;
+    while (str1[i] != '\0') {
         i++;
     }
-    while(str1[j]!='\0'){
-        str2[i]=str1[j];
+    while (str2[j] != '\0') {
+        str1[i] = str2[j];
         i++;
         j++;
     }
+    str1[i] = '\0';
 }
 
 void display(char *str) {
-    printf("Concatenated string:%s\n",str);
-    // Write code to display the string
+    printf("Concatenated string: %s\n", str);
 }

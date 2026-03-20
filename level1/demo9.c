@@ -10,64 +10,58 @@ struct Student {
     float marks;
 };
 
-/* Function Prototypes */
 int readStudents(struct Student s[]);
 void writeToFile(struct Student s[], int n);
 int readFromFile(struct Student s[]);
 void displayStudents(struct Student s[], int n);
 
 int main() {
-
     struct Student students[MAX_STUDENTS];
     struct Student fileStudents[MAX_STUDENTS];
-
     int n, m;
 
-    /* Read student details */
     n = readStudents(students);
-
-    /* Write data to file */
     writeToFile(students, n);
-
-    /* Read data from file */
     m = readFromFile(fileStudents);
-
-    /* Display student records */
     displayStudents(fileStudents, m);
 
     return 0;
 }
 
-/* Read student details from user */
 int readStudents(struct Student s[]) {
-
     int n;
-
-    // TODO: Implement reading of student records
-
+    printf("Enter no of students: ");
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++) {
+        printf("Enter ID, Name, Marks for student %d: ", i + 1);
+        scanf("%d %s %f", &s[i].id, s[i].name, &s[i].marks);
+    }
     return n;
 }
 
-/* Write student records to file */
 void writeToFile(struct Student s[], int n) {
-
-    // TODO: Implement file writing using fprintf()
-
+    FILE *fp = fopen("students.txt", "w");
+    if (fp == NULL) return;
+    for(int i = 0; i < n; i++) {
+        fprintf(fp, "%d %s %f\n", s[i].id, s[i].name, s[i].marks);
+    }
+    fclose(fp);
 }
 
-/* Read student records from file */
 int readFromFile(struct Student s[]) {
-
     int count = 0;
-
-    // TODO: Implement file reading using fscanf()
-
+    FILE *fp = fopen("students.txt", "r");
+    if (fp == NULL) return 0;
+    while(fscanf(fp, "%d %s %f", &s[count].id, s[count].name, &s[count].marks) != EOF) {
+        count++;
+    }
+    fclose(fp);
     return count;
 }
 
-/* Display student records */
 void displayStudents(struct Student s[], int n) {
-
-    // TODO: Implement display logic
-
+    printf("\nStudent Records from File:\n");
+    for(int i = 0; i < n; i++) {
+        printf("ID: %d, Name: %s, Marks: %.2f\n", s[i].id, s[i].name, s[i].marks);
+    }
 }

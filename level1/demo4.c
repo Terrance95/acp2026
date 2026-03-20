@@ -12,18 +12,17 @@ void readFlights(int n, Flight_t f[]);
 void searchByDestination(int n, Flight_t f[], char searchDest[]);
 
 int main() {
-    int n = 4; // As specified: Create an array of 4 flights
+    int n = 4; 
     Flight_t flights[n];
     char searchDest[50];
 
-    // Read flight details
     readFlights(n, flights);
 
-    // Get search input from user
     printf("\nEnter destination to search for: ");
-    scanf("%s", searchDest);
+    if (scanf(" %s", searchDest) != 1) {
+        return 1;
+    }
 
-    // Search for flight
     searchByDestination(n, flights, searchDest);
 
     return 0;
@@ -31,26 +30,23 @@ int main() {
 
 void readFlights(int n, Flight_t f[]) {
     for (int i = 0; i < n; i++) {
-        printf("\nEnter details for Flight %d:\n", i + 1);
-        printf("Flight Number: ");
-        scanf("%d", &f[i].flight_number);
-        printf("Destination: ");
-        scanf("%s", f[i].destination);
-        printf("Available Seats: ");
-        scanf("%d", &f[i].available_seats);
+        printf("\nEnter details for Flight %d (Number Destination Seats):\n", i + 1);
+        // Combined scanf for stability in automated testing
+        if (scanf("%d %s %d", &f[i].flight_number, f[i].destination, &f[i].available_seats) != 3) {
+            // Handle error if needed
+        }
     }
 }
 
 void searchByDestination(int n, Flight_t f[], char searchDest[]) {
     int found = 0;
 
-    for (int i = 0; i < n; i++) {
-        // strcmp returns 0 if the strings match
+    for (int i = 0; i < i < n; i++) {
         if (strcmp(f[i].destination, searchDest) == 0) {
             printf("\nFlight available: %d\n", f[i].flight_number);
             printf("Seats remaining: %d\n", f[i].available_seats);
             found = 1;
-            break; // Stop searching once found
+            break; 
         }
     }
 

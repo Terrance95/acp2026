@@ -7,37 +7,43 @@ void output(float arr[], int max_index);
 
 int main() {
     int n;
-    printf("Enter the number of elements: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
+    printf("Enter the number of elements: \n");
+    
+    // Check if scanf successfully read an integer
+    if (scanf("%d", &n) != 1) {
+        printf("Invalid input: Please enter a number.\n");
+        return 0;
+    }
+    
+    // Handle edge case: 0 or negative elements
+    if (n <= 0) {
         printf("Invalid number of elements.\n");
-        return 1;
+        return 0;
     }
 
     float arr[n];
-    
-    // Using the input function
+    printf("Enter the array elements:\n");
     input(n, arr);
-
-    // Finding the max index
+    
     int max_idx = find_max_index(n, arr);
-
-    // Displaying the results
     output(arr, max_idx);
-
+    
     return 0;
 }
 
-// Reads n float values into the array
 void input(int n, float arr[n]) {
-    printf("Enter %d array elements:\n", n);
     for (int i = 0; i < n; i++) {
-        scanf("%f", &arr[i]); // Corrected to %f for floats
+        // Checking return value here too ensures we don't 
+        // process junk if a float input is invalid
+        if (scanf("%f", &arr[i]) != 1) {
+            printf("Error reading element %d.\n", i);
+            return;
+        }
     }
 }
 
-// Finds and returns the index of the maximum element
 int find_max_index(int n, float arr[n]) {
-    int max_i = 0; 
+    int max_i = 0;
     for (int i = 1; i < n; i++) {
         if (arr[i] > arr[max_i]) {
             max_i = i;
@@ -46,7 +52,6 @@ int find_max_index(int n, float arr[n]) {
     return max_i;
 }
 
-// Prints the value and the index
 void output(float arr[], int max_index) {
     printf("Maximum element is %.2f\n", arr[max_index]);
     printf("Index of maximum element is %d\n", max_index);

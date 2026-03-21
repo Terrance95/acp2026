@@ -6,62 +6,65 @@ typedef struct {
     float billAmount;
 } Bill;
 
-void input(int n, Bill bills[n]);
-void calculate_Bills(int n, Bill bills[n]);
-int findHighestBillIndex(int n, Bill bills[n]);
+void input(int n, Bill bills[]);
+void calculate_Bills(int n, Bill bills[]);
+int findHighestBillIndex(int n, Bill bills[]);
 void displayHighestBill(int index, Bill bills[]);
 
 int main() {
-
     int n;
-    Bill bills[100];
+    Bill bills[100]; // Fixed maximum size
     int index;
 
     printf("Enter number of consumers:\n");
-    scanf("%d",&n);
+    if (scanf("%d", &n) != 1 || n <= 0 || n > 100) {
+        printf("Invalid number of consumers (Min: 1, Max: 100).\n");
+        return 1;
+    }
 
-    // Call function to input consumer details
-    input(n,bills);
-    // Call function to calculate electricity bills
-    calculate_Bills(n,bills);
-    // Call function to find index of highest bill
-    index=findHighestBillIndex(n,bills);
-    // Call function to display highest bill
-    displayHighestBill(index,bills);
+    input(n, bills);
+    calculate_Bills(n, bills);
+    index = findHighestBillIndex(n, bills);
+    displayHighestBill(index, bills);
 
     return 0;
 }
 
-void input(int n, Bill bills[n]) {
-    printf("Enter consumer details(ID,units consumed):\n");
-    // Write code to read consumerID and unitsConsumed
-    for(int i=0;i<n;i++){
-        printf("comsumer %d:",i+1);
-        scanf("%d %f",&bills[i].consumerID,&bills[i].unitsConsumed);
-    }
-}
-
-void calculate_Bills(int n, Bill bills[n]) {
-    // Write code to calculate billAmount
-    for(int i=0;i<n;i++){
-        bills[i].billAmount=bills[i].unitsConsumed*3.5;
-    }
-}
-
-int findHighestBillIndex(int n, Bill bills[n]) {
-    // Write code to find index of highest bill
-    int index=0;
-    for(int i=1;i<n;i++){
-        if(bills[index].billAmount>bills[i].billAmount){
-            index=i;
+void input(int n, Bill bills[]) {
+    printf("Enter consumer details (ID and units consumed) for %d consumers:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("Consumer %d: ", i + 1);
+        if (scanf("%d %f", &bills[i].consumerID, &bills[i].unitsConsumed) != 2) {
+            printf("Invalid input. Skipping record.\n");
         }
     }
-    return index;
+}
+
+void calculate_Bills(int n, Bill bills[]) {
+    for (int i = 0; i < n; i++) {
+        // Edge Case: No negative bills if units are negative
+        if (bills[i].unitsConsumed < 0) {
+            bills[i].billAmount = 0;
+        } else {
+            bills[i].billAmount = bills[i].unitsConsumed * 3.5;
+        }
+    }
+}
+
+int findHighestBillIndex(int n, Bill bills[]) {
+    int maxIndex = 0;
+    for (int i = 1; i < n; i++) {
+        // Corrected: find HIGHEST, not lowest
+        if (bills[i].billAmount > bills[maxIndex].billAmount) {
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
 }
 
 void displayHighestBill(int index, Bill bills[]) {
-    printf("Consumer with highest bill:\n");
-    printf("consumer id:%d\n",bills[index].consumerID);
-    printf("bill amount:%f",bills[index].billAmount);
-    // Write code to display consumer details
+    printf("\nConsumer with highest bill:\n");
+    printf("Consumer ID: %d\n", bills[index].consumerID);
+    printf("Units Consumed: %.2f\n", bills[index].unitsConsumed);
+    printf("Bill Amount: %.2f\n", bills[index].billAmount);
 }

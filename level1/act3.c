@@ -6,7 +6,6 @@ typedef struct {
     float total_bill;
 } ElectricityBill;
 
-// Function prototypes
 ElectricityBill input();
 ElectricityBill calculate_bill(ElectricityBill bill);
 void output(ElectricityBill bill);
@@ -15,45 +14,50 @@ int main() {
     ElectricityBill bill;
 
     bill = input();
+    
+    // Edge Case: Handle negative values before calculation
+    if (bill.units < 0 || bill.rate < 0) {
+        printf("Error: Units and Rate must be non-negative.\n");
+        return 1; 
+    }
+
     bill = calculate_bill(bill);
     output(bill);
 
     return 0;
 }
 
-// Function to read input
 ElectricityBill input() {
     ElectricityBill bill;
 
     printf("Enter units consumed:\n");
-    scanf("%d",&bill.units);
-    // TODO: read units using scanf
+    scanf("%d", &bill.units);
 
     printf("Enter rate per unit:\n");
-    scanf("%f",&bill.rate);
-    // TODO: read rate using scanf
+    scanf("%f", &bill.rate);
 
     return bill;
 }
 
-// Function to calculate bill
 ElectricityBill calculate_bill(ElectricityBill bill) {
-
-    // TODO: if units < 50 then bill = 0
-    // TODO: else calculate bill = units * rate
-    if(bill.units<50){
-        bill.total_bill=0;
-    }
-    else{
-        bill.total_bill=bill.units*bill.rate;
+    // Edge Case: Threshold logic
+    // If the requirement is "less than 50", then 50 is charged.
+    if (bill.units < 50) {
+        bill.total_bill = 0.0;
+    } else {
+        bill.total_bill = (float)bill.units * bill.rate;
     }
 
     return bill;
 }
 
-// Function to display result
 void output(ElectricityBill bill) {
     printf("\nUnits Consumed: %d\n", bill.units);
     printf("Rate per Unit: %.2f\n", bill.rate);
-    printf("Total Bill: %.2f\n", bill.total_bill);
+    
+    if (bill.total_bill == 0.0 && bill.units > 0) {
+        printf("Total Bill: 0.00 (Minimum usage threshold not met)\n");
+    } else {
+        printf("Total Bill: %.2f\n", bill.total_bill);
+    }
 }

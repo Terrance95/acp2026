@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 typedef struct {
     char player_name[30];
@@ -11,35 +12,41 @@ float calculateAverageRuns(int n, Player p[]);
 
 int main() {
     Player p[11];
-    
     float avg;
 
     readPlayers(11, p);
     avg = calculateAverageRuns(11, p);
 
-    printf("Average Runs: %.2f\n", avg);
+    printf("\n--- Match Statistics ---\n");
+    printf("Average Runs of the Team: %.2f\n", avg);
 
     return 0;
 }
 
 void readPlayers(int n, Player p[]) {
-    // TODO: Use a loop to read player_name, jersey_number, and runs_scored
-    for(int i=0;i<n;i++){
-        printf("enter player %d details(name,jersey no,runs scored):\n",i+1);
-        fgets(p[i].player_name,30,stdin);
-        scanf("%d%d",p[i].jersey_number,p[i].runs_scored);
+    for(int i = 0; i < n; i++) {
+        printf("\nEnter details for Player %d:\n", i + 1);
+        
+        printf("Name: ");
+        // Clean the buffer before reading a string after numbers
+        getchar(); 
+        fgets(p[i].player_name, 30, stdin);
+        
+        // Remove the newline character added by fgets
+        p[i].player_name[strcspn(p[i].player_name, "\n")] = 0;
+
+        printf("Jersey Number: ");
+        scanf("%d", &p[i].jersey_number); // Added &
+
+        printf("Runs Scored: ");
+        scanf("%d", &p[i].runs_scored);   // Added &
     }
 }
 
 float calculateAverageRuns(int n, Player p[]) {
-    float average = 0;
-    float total=0;
-    for(int i=0;i<n;i++){
-        total+=p[i].runs_scored;
+    float total = 0;
+    for(int i = 0; i < n; i++) {
+        total += p[i].runs_scored;
     }
-    average=total/n;
-    // TODO: Calculate total runs using a loop
-    // TODO: Compute average = total_runs / n
-
-    return average;
+    return (n > 0) ? (total / n) : 0;
 }

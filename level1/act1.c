@@ -12,6 +12,10 @@ int main() {
     printf("enter no of temperatures u want to enter:");
     if (scanf("%d", &n) != 1 || n <= 0) {
         printf("invalid value for n entered\n");
+        return 1;
+    }
+    if(n<=0){
+        printf("invalid n");
         return 0;
     }
 

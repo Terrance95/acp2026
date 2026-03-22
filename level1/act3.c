@@ -15,7 +15,6 @@ int main() {
 
     bill = input();
     
-    // Edge Case: Handle negative values before calculation
     if (bill.units < 0 || bill.rate < 0) {
         printf("Error: Units and Rate must be non-negative.\n");
         return 1; 

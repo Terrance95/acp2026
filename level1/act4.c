@@ -13,13 +13,17 @@ void displayHighestBill(int index, Bill bills[]);
 
 int main() {
     int n;
-    Bill bills[100]; // Fixed maximum size
+    Bill bills[100]; 
     int index;
 
     printf("Enter number of consumers:\n");
     if (scanf("%d", &n) != 1 || n <= 0 || n > 100) {
         printf("Invalid number of consumers (Min: 1, Max: 100).\n");
         return 1;
+    }
+    if(n<=0){
+        printf("invalid n");
+        return 0;
     }
 
     input(n, bills);
@@ -42,7 +46,6 @@ void input(int n, Bill bills[]) {
 
 void calculate_Bills(int n, Bill bills[]) {
     for (int i = 0; i < n; i++) {
-        // Edge Case: No negative bills if units are negative
         if (bills[i].unitsConsumed < 0) {
             bills[i].billAmount = 0;
         } else {
@@ -54,7 +57,6 @@ void calculate_Bills(int n, Bill bills[]) {
 int findHighestBillIndex(int n, Bill bills[]) {
     int maxIndex = 0;
     for (int i = 1; i < n; i++) {
-        // Corrected: find HIGHEST, not lowest
         if (bills[i].billAmount > bills[maxIndex].billAmount) {
             maxIndex = i;
         }

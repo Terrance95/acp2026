@@ -15,7 +15,7 @@ int main() {
     bill = input();
     
     if (bill.units < 0 || bill.rate < 0) {
-        printf("Invalid input values.\n");
+        printf("Invalid input values entered.\n");
         return 0;
     }
 

@@ -30,10 +30,10 @@ ElectricityBill input() {
     ElectricityBill bill;
 
     printf("Enter units consumed:\n");
-    scanf("%d", &bill.units);
+    scanf(" %d", &bill.units);
 
     printf("Enter rate per unit:\n");
-    scanf("%f", &bill.rate);
+    scanf(" %f", &bill.rate);
 
     return bill;
 }

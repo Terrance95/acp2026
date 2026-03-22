@@ -9,7 +9,7 @@ int main() {
     printf("enter the number of elements:");
     scanf("%d",&n);
     if(n<=0) {
-        printf("Invalid input for n");
+        printf("Invalid input");
         return 0;
     }
     int a[n],b[n];

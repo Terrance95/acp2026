@@ -29,10 +29,14 @@ ElectricityBill input() {
     ElectricityBill bill;
 
     printf("Enter units consumed: ");
-    scanf("%d", &bill.units);
+    if (scanf(" %d", &bill.units) != 1) {
+        bill.units = -1; 
+    }
 
     printf("Enter rate per unit: ");
-    scanf("%f", &bill.rate);
+    if (scanf(" %f", &bill.rate) != 1) {
+        bill.rate = -1;
+    }
 
     return bill;
 }
@@ -41,7 +45,6 @@ ElectricityBill calculate_bill(ElectricityBill bill) {
     if (bill.units > 100) {
         printf("High consumption alert! Extra charge applied.\n");
         
-        // Logic: First 100 units at normal rate + Remaining units at (rate + 5)
         float base_charge = 100 * bill.rate;
         float extra_units = bill.units - 100;
         float extra_charge = extra_units * (bill.rate + 5);

@@ -22,7 +22,7 @@ int main() {
         return 1;
     }
     if(n<=0){
-        printf("invalid n");
+        printf("invalid n value entered");
         return 0;
     }
 

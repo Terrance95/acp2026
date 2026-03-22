@@ -17,7 +17,7 @@ int main() {
     readPlayers(11, p);
     avg = calculateAverageRuns(11, p);
 
-    printf("\n--- Match Statistics ---\n");
+    printf("\n---- Match Statistics ----\n");
     printf("Average Runs of the Team: %.2f\n", avg);
 
     return 0;
@@ -28,18 +28,16 @@ void readPlayers(int n, Player p[]) {
         printf("\nEnter details for Player %d:\n", i + 1);
         
         printf("Name: ");
-        // Clean the buffer before reading a string after numbers
         getchar(); 
         fgets(p[i].player_name, 30, stdin);
         
-        // Remove the newline character added by fgets
         p[i].player_name[strcspn(p[i].player_name, "\n")] = 0;
 
         printf("Jersey Number: ");
-        scanf("%d", &p[i].jersey_number); // Added &
+        scanf("%d", &p[i].jersey_number); 
 
         printf("Runs Scored: ");
-        scanf("%d", &p[i].runs_scored);   // Added &
+        scanf("%d", &p[i].runs_scored);  
     }
 }
 

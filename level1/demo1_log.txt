@@ -1,0 +1,19 @@
+Breakpoint 1 at 0x140001460: file demo1.c, line 8.
+Starting program: C:\projects\acp2026\level1\demo1.exe 
+[New Thread 16352.0x64b4]
+[New Thread 16352.0x5434]
+[New Thread 16352.0x5a70]
+[New Thread 16352.0x6298]
+
+Thread 1 hit Breakpoint 1, 0x00007ff699821460 in main () at demo1.c:8
+8	int main() {
+10	    printf("Enter the number of elements: \n");
+13	    if (scanf("%d", &n) != 1) {
+19	    if (n <= 0) {
+24	    float arr[n];
+25	    printf("Enter the array elements:\n");
+26	    input(n, arr);
+28	    int max_idx = find_max_index(n, arr);
+29	    output(arr, max_idx);
+31	    return 0;
+32	}

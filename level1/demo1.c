@@ -33,8 +33,6 @@ int main() {
 
 void input(int n, float arr[n]) {
     for (int i = 0; i < n; i++) {
-        // Checking return value here too ensures we don't 
-        // process junk if a float input is invalid
         if (scanf("%f", &arr[i]) != 1) {
             printf("Error reading element %d.\n", i);
             return;

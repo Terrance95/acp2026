@@ -1,0 +1,8 @@
+No symbol table is loaded.  Use the "file" command.
+Breakpoint 1 (main) pending.
+Starting program:  
+No executable specified, use `target exec'.
+Starting program:  malloc.exe
+No executable specified, use `target exec'.
+Starting program:  malloc
+No executable specified, use `target exec'.

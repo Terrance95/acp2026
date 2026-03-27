@@ -1,0 +1,35 @@
+Breakpoint 1 at 0x140001466: file malloc.c, line 7.
+Starting program: C:\projects\acp2026\level1\malloc.exe 
+[New Thread 8960.0x23c4]
+[New Thread 8960.0x159c]
+[New Thread 8960.0x35e0]
+
+Thread 1 hit Breakpoint 1, main () at malloc.c:7
+7	    char **names = NULL; // Pointer to store our array of strings
+8	    int count = 0;
+11	        printf("Enter next name (or 'exit' to stop): ");
+12	        scanf("%s", temp);
+Undefined command: "terrance".  Try "help".
+14	        if (strcmp(temp, "exit") == 0) {
+19	        char **ptr = realloc(names, (count + 1) * sizeof(char *));
+20	        if (ptr == NULL) {
+24	        names = ptr;
+27	        names[count] = malloc(strlen(temp) + 1);
+28	        if (names[count] != NULL) {
+29	            strcpy(names[count], temp);
+30	            count++;
+10	    while (1) {
+11	        printf("Enter next name (or 'exit' to stop): ");
+12	        scanf("%s", temp);
+14	        if (strcmp(temp, "exit") == 0) {
+15	            break;
+35	    printf("\nStored Names:\n");
+36	    for (int i = 0; i < count; i++) {
+37	        printf("%d: %s\n", i + 1, names[i]);
+38	        free(names[i]); // Free individual name memory
+36	    for (int i = 0; i < count; i++) {
+41	    free(names); // Free the pointer array itself
+42	    return 0;
+43	}
+__tmainCRTStartup () at D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c:237
+warning: 237	D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c: No such file or directory

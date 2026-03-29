@@ -30,7 +30,7 @@ int main() {
 
 int readStudents(struct Student s[]) {
     int n;
-    printf("Enter no of students:");
+    printf("Enter no of students: ");
     scanf("%d", &n);
     for(int i = 0; i < n; i++) {
         printf("Enter ID, Name, Marks for student %d: ", i + 1);

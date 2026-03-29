@@ -14,7 +14,7 @@ int main() {
     if (scanf("%d", &n) != 1) return 1;
 
     if(n <= 0) {
-        printf("Invalid array size!(n)\n");
+        printf("Invalid array size!\n");
         return 0;
     }
 

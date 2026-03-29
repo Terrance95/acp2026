@@ -18,7 +18,7 @@ void inputStudents(Student students[], int n) {
 }
 
 void writeToBinaryFile(Student students[], int n, const char *filename) {
-    FILE *fp = fopen(filename, "wb"); // 'wb' means Write Binary
+    FILE *fp = fopen(filename,"wb"); // 'wb' means Write Binary
     if (fp == NULL) return;
     fwrite(students, sizeof(Student), n, fp);
     fclose(fp);

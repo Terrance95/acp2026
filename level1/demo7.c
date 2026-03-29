@@ -22,11 +22,11 @@ int main() {
 void inputStrings(char str1[], char str2[]) {
     printf("Enter first string:\n");
     fgets(str1, 100, stdin);
-    str1[strcspn(str1,"\n")] = 0; // Removes trailing newline for clean comparison
+    str1[strcspn(str1, "\n")] = 0; // Removes trailing newline for clean comparison
 
     printf("Enter second string:\n");
     fgets(str2, 100, stdin);
-    str2[strcspn(str2,"\n")] = 0; // Removes trailing newline for clean comparison
+    str2[strcspn(str2, "\n")] = 0; // Removes trailing newline for clean comparison
 }
 
 int compareStrings(char str1[], char str2[]) {

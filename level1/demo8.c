@@ -21,7 +21,7 @@ int main() {
 void input(char *str) {
     printf("Enter string:\n");
     fgets(str, 100, stdin);
-    str[strcspn(str,"\n")] = 0;
+    str[strcspn(str, "\n")] = 0;
 }
 
 void concatenate_strings(char *str1, char *str2) {

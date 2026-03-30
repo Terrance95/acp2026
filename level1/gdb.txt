@@ -1,0 +1,139 @@
+Breakpoint 1 at 0x14000145d: file demo6.c, line 11.
+Starting program: C:\projects\acp2026\level1\demo6.exe 
+[New Thread 5004.0x541c]
+[New Thread 5004.0x3960]
+[New Thread 5004.0xd68]
+
+Thread 1 hit Breakpoint 1, main () at demo6.c:11
+11	    int *arr = NULL; 
+13	    printf("Enter number of elements: ");
+14	    if (scanf("%d", &n) != 1) return 1;
+16	    if(n <= 0) {
+21	    arr = create_array(n);
+23	    if(arr == NULL) {
+28	    printf("Enter %d integers:\n", n);
+29	    initialize_array(arr, n);
+31	    printf("Array elements are:\n");
+32	    print_array(arr, n);
+34	    delete_array(&arr);
+36	    if(arr == NULL)
+37	        printf("\nMemory successfully freed and pointer set to NULL.\n");
+39	    return 0;
+40	}
+Breakpoint 1 at 0x140001465: file demo7.c, line 12.
+Breakpoint 2 at 0x140001569: file demo7.c, line 33.
+Starting program: C:\projects\acp2026\level1\demo7.exe 
+[New Thread 22000.0x8a0]
+[New Thread 22000.0xb50]
+[New Thread 22000.0x3884]
+
+Thread 1 hit Breakpoint 1, main () at demo7.c:12
+12	    inputStrings(str1, str2);
+15	    result = compareStrings(str1, str2);
+
+Thread 1 hit Breakpoint 2, compareStrings (str1=0x5ffe10 "n", str2=0x5ffda0 "nnv") at demo7.c:33
+33	    int val = strcmp(str1, str2);
+36	    if (val == 0) return 0;
+37	    return (val > 0) ? 1 : -1;
+38	}
+main () at demo7.c:17
+17	    output(result);
+19	    return 0;
+20	}
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+Breakpoint 1 at 0x140001465: file demo8.c, line 11.
+Breakpoint 2 at 0x14000151b: file demo8.c, line 28.
+Starting program: C:\projects\acp2026\level1\demo8.exe 
+[New Thread 5016.0x4b44]
+[New Thread 5016.0x1708]
+[New Thread 5016.0xcf0]
+
+Thread 1 hit Breakpoint 1, main () at demo8.c:11
+11	    input(str1);
+12	    input(str2);
+14	    concatenate_strings(str1, str2);
+
+Thread 1 hit Breakpoint 2, concatenate_strings (str1=0x5ffdb0 "terrance", str2=0x5ffd40 "paul") at demo8.c:28
+28	    int i = 0, j = 0;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+30	        i++;
+29	    while (str1[i] != '\0') {
+32	    while (str2[j] != '\0') {
+33	        str1[i] = str2[j];
+Undefined command: "nn".  Try "help".
+34	        i++;
+35	        j++;
+32	    while (str2[j] != '\0') {
+33	        str1[i] = str2[j];
+34	        i++;
+35	        j++;
+32	    while (str2[j] != '\0') {
+33	        str1[i] = str2[j];
+34	        i++;
+35	        j++;
+32	    while (str2[j] != '\0') {
+33	        str1[i] = str2[j];
+34	        i++;
+35	        j++;
+32	    while (str2[j] != '\0') {
+37	    str1[i] = '\0';
+38	}
+main () at demo8.c:16
+16	    display(str1);
+18	    return 0;
+19	}
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+Breakpoint 1 at 0x14000146b: file demo9.c, line 23.
+Starting program: C:\projects\acp2026\level1\demo9.exe 
+[New Thread 23504.0x4188]
+[New Thread 23504.0x596c]
+[New Thread 23504.0xdb4]
+
+Thread 1 hit Breakpoint 1, main () at demo9.c:23
+23	    n = readStudents(students);
+24	    writeToFile(students, n);
+25	    m = readFromFile(fileStudents);
+26	    displayStudents(fileStudents, m);
+28	    return 0;
+29	}
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+Breakpoint 1 at 0x140001677: file demo10.c, line 48.
+Starting program: C:\projects\acp2026\level1\demo10.exe 
+[New Thread 18332.0x3d34]
+[New Thread 18332.0x581c]
+[New Thread 18332.0x118c]
+
+Thread 1 hit Breakpoint 1, main () at demo10.c:48
+48	    printf("Enter number of students: ");
+49	    scanf("%d", &n);
+51	    inputStudents(input, n);
+[Thread 18332.0x3d34 exited with code 0]
+[Thread 18332.0x581c exited with code 0]
+52	    writeToBinaryFile(input, n, FILENAME);
+53	    count = readFromBinaryFile(output, FILENAME);
+54	    printStudents(output, count);
+56	    return 0;
+57	}
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+

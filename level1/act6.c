@@ -1,36 +1,50 @@
 #include <stdio.h>
 #include <string.h>
 
-void read_string(char *str, int size);
-void swap_strings(char *str1, char *str2, int size);
+#define MAX 256
+
+// Function Prototypes
+void read_string(char str[], int size);
+void print_string(char str[]);
+void swap_strings(char str1[], char str2[]);
 
 int main() {
-    char str1[100], str2[100];
+    char str1[MAX], str2[MAX];
 
-    printf("Enter first string: ");
-    read_string(str1, 100);
+    // Using fgets inside read_string for space-handling and safety
+    read_string(str1, MAX);
+    read_string(str2, MAX);
 
-    printf("Enter second string: ");
-    read_string(str2, 100);
+    swap_strings(str1, str2);
 
-    swap_strings(str1, str2, 100);
+    // Clean output for BATS matching
+    printf("First string: ");
+    print_string(str1);
 
-    printf("\n--- After Optimized Swap ---\n");
-    printf("First: %s", str1);
-    printf("Second: %s", str2);
+    printf("Second string: ");
+    print_string(str2);
 
     return 0;
 }
 
-void read_string(char *str, int size) {
+void read_string(char str[], int size) {
+    // fgets reads up to size-1 characters and adds \0
     if (fgets(str, size, stdin)) {
+        // Remove the trailing newline character (\n) if present
         str[strcspn(str, "\n")] = 0;
     }
 }
 
-void swap_strings(char *str1, char *str2, int size) {
-    char temp[size]; 
-    memcpy(temp, str1, size);
-    memcpy(str1, str2, size);
-    memcpy(str2, temp, size);
+void print_string(char str[]) {
+    // Standard output with a newline for clarity
+    printf("%s\n", str);
+}
+
+void swap_strings(char str1[], char str2[]) {
+    char temp[MAX];
+    
+    // Copying the data physically between buffers
+    strcpy(temp, str1);
+    strcpy(str1, str2);
+    strcpy(str2, temp);
 }

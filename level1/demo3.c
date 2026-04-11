@@ -7,7 +7,6 @@ typedef struct {
     float area;
 } Rectangle;
 
-// Function Prototypes - Using pointers for better array handling
 void input(int n, Rectangle *rects);
 void calculate_area(int n, Rectangle *rects);
 int findLargestArea(int n, Rectangle *rects);
@@ -16,14 +15,10 @@ void output(int n, int largestIndex, Rectangle *rects);
 int main() {
     int n;
 
-    // Prompt for n
+    printf("enter the num,ber of rectangles: ");
     if (scanf("%d", &n) != 1 || n <= 0) {
         printf("Invalid input. Please enter a positive integer.\n");
-        return 1;
-    }
-    if(n<=0){
-        printf("invalid input for n");
-        return 1;
+        return 0;
     }
 
     Rectangle *rects = (Rectangle *)malloc(n * sizeof(Rectangle));
@@ -39,10 +34,10 @@ int main() {
 }
 
 void input(int n, Rectangle *rects) {
+    printf("enter length and width\n");
     for (int i = 0; i < n; i++) {
-        // Simplified scanf to handle both space-separated and newline-separated input
+        printf("rectangle %d:",i=1);
         if (scanf("%f %f", &rects[i].length, &rects[i].width) != 2) {
-            // Error handling for bad float inputs
         }
     }
 }
@@ -66,7 +61,6 @@ int findLargestArea(int n, Rectangle *rects) {
 void output(int n, int largestIndex, Rectangle *rects) {
     printf("\n--- Areas of all rectangles ---\n");
     for (int i = 0; i < n; i++) {
-        // MATCH THIS EXACTLY TO YOUR BATS FILE
         printf("Rectangle %d: %.2f x %.2f = Area: %.2f\n", 
                 i + 1, rects[i].length, rects[i].width, rects[i].area);
     }

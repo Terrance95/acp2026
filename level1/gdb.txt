@@ -137,3 +137,32 @@ Thread 1 hit Breakpoint 1, main () at demo10.c:48
 Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
 Use 'set logging enabled off'.
 
+Breakpoint 1 at 0x140001465: file act6.c, line 10.
+Breakpoint 2 at 0x140001570: file act6.c, line 31.
+Starting program: C:\projects\acp2026\level1\act6.exe 
+[New Thread 5900.0xd4]
+[New Thread 5900.0x3310]
+[New Thread 5900.0x3738]
+
+Thread 1 hit Breakpoint 1, main () at act6.c:10
+10	    printf("Enter first string: ");
+11	    read_string(str1, 100);
+13	    printf("Enter second string: ");
+14	    read_string(str2, 100);
+16	    swap_strings(str1, str2, 100);
+
+Thread 1 hit Breakpoint 2, swap_strings (str1=0x5ffe10 "paul", str2=0x5ffda0 "terrance", size=100) at act6.c:31
+31	void swap_strings(char *str1, char *str2, int size) {
+32	    char temp[size]; 
+33	    memcpy(temp, str1, size);
+34	    memcpy(str1, str2, size);
+35	    memcpy(str2, temp, size);
+36	}
+main () at act6.c:18
+18	    printf("\n--- After Optimized Swap ---\n");
+19	    printf("First: %s", str1);
+20	    printf("Second: %s", str2);
+22	    return 0;
+23	}
+__tmainCRTStartup () at D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c:237
+warning: 237	D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c: No such file or directory
